@@ -7,7 +7,8 @@ var connection = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'root',
-    database:'friendschema'
+    database:'friendschema',
+    multipleStatements: true
 });
 
 //Connect to mysql server with given connection attributes
@@ -47,6 +48,7 @@ exports.loginMysqlProc = function(req,res){
             if(test.length > 0){
                 
                 req.session.kayttaja = test[0].username;
+                req.session.userid = test[0].user_id;
                 var token = jwt.sign(results,server.secret, {expiresIn:'2h'});
                 res.send(200,{status:"Ok",secret:token});
             }
@@ -89,4 +91,33 @@ exports.getFriendsForUserByUsername = function(req,res){
 
     });
 
+}
+
+exports.addNewFriend = function(req,res){
+
+    connection.query('CALL addNewFriend(?,?,?,?)',
+        [req.body.name,req.body.address,req.body.age,req.session.userid],function(error,result,fields){
+
+            if(error){
+
+                res.status(500).json({message:'Fail'});
+            }else{
+
+                res.status(200).json({data:result});
+            }
+        });
+}
+
+exports.updateFriend = function(req,res){
+
+    connection.query('UPDATE friend set name = ?, address = ?, age = ? WHERE _id = ?',
+        [req.body.name,req.body.address,req.body.age,req.body.id],function(error,result,fields){
+
+            if(error){
+                res.status(500).json({message:'Fail'});
+            }else{
+                  res.status(200).json({data:result});
+            }
+
+    });
 }
