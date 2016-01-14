@@ -8,14 +8,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maukka76/HTML5View.git"
+    "url": ""
   },
-  "author": "Markus Veijola",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/maukka76/HTML5View/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/maukka76/HTML5View#readme",
+  "homepage": "",
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",

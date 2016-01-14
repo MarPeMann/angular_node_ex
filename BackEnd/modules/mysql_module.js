@@ -7,7 +7,7 @@ var connection = mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'root',
-    database:'friendschema',
+    database:'friends_schema',
     multipleStatements: true
 });
 
@@ -119,5 +119,33 @@ exports.updateFriend = function(req,res){
                   res.status(200).json({data:result});
             }
 
+    });
+}
+
+exports.deleteFriends = function(req,res){
+    
+    var toDelete = [];
+    if(req.query.forDelete instanceof Array)
+        toDelete = req.query.forDelete;
+    else{
+        
+       toDelete.push(req.query.forDelete); 
+    }
+    
+    var query = "";
+    
+    for(var i = 0; i < toDelete.length; i++){
+        
+        query += "DELETE FROM friend WHERE _id=" + toDelete[i] + ";";
+    }
+    
+    connection.query(query,[],function(error,results,fields){
+        
+        if(error){
+     
+            res.status(500).send({message:error});
+        }else{
+            res.status(200).send({message:'Delete success'});
+        }
     });
 }

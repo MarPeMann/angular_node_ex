@@ -30,7 +30,8 @@ router.put('/',function(req,res){
 });
 
 router.delete('/',function(req,res){
-    db.deletePerson(req,res);
+    //db.deletePerson(req,res);
+    mysql.deleteFriends(req,res);
 });
 
 module.exports = router;
