@@ -1,12 +1,23 @@
+<!-- grid layout rule 1: everything must go inside container -->
+<div class="container">
+	<!-- rule 2 every column must be inside of a row -->
+	<div class="row">
+		<!-- rule 3 columns are defined within row -->
+		<div class="col-sm-3">Col 1</div>
+		<div class="col-sm-3">Col 2</div>
+		<div class="col-sm-3">Col 3</div>
+		<div class="col-sm-3 visible-lg">Col 4</div>
+	</div>
+	<form class='loginForm'>
+	    <h3>Login to friends app</h3>
+	    <!--ng-model directive is the way to tarnsfer data to controller -->
+	    <input class="form-control" type="text" placeholder="username" ng-model="user"><br/>
+	    <input class="form-control" type="password" placeholder="password" ng-model='pass'><br/>
+	    <input class="btn btn-default" type="button" value="Login" ng-click='loginClicked()'>
+	    <input class="btn btn-default" type="button" value="Register" ng-click='registerClicked()'>
+	    <!--bind the data from username textfield (use the variable 'user')-->
+	    <p>{{user}}</p>
+	</form>
+	<div class="flash-style" flash-message="2000"></div>
 
-<form class='loginForm'>
-    <h3>Login to friends app</h3>
-    <!--ng-model directive is the way to tarnsfer data to controller -->
-    <input class="form-control" type="text" placeholder="username" ng-model="user"><br/>
-    <input class="form-control" type="password" placeholder="password" ng-model='pass'><br/>
-    <input class="btn btn-default" type="button" value="Login" ng-click='loginClicked()'>
-    <input class="btn btn-default" type="button" value="Register" ng-click='registerClicked()'>
-    <!--bind the data from username textfield (use the variable 'user')-->
-    <p>{{user}}</p>
-</form>
-<div class="flash-style" flash-message="2000"></div> 
+</div> 
