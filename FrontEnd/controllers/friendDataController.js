@@ -1,6 +1,7 @@
 main_module.controller('friendDataController',function($scope,friendDataFactory,$location){
     
     $scope.name = "by Testi Nimi";
+    $scope.temp = ['Dee Dee Ramone','Richard Hell', 'Handsome Dick Manitoba', 'Iggy Pop'];
     console.log('friendDataController loaded');
     
     friendDataFactory.getFriendData(dataCallback);
