@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var jwt = require('jsonwebtoken');
 var bodyParser = require("body-parser");
@@ -69,6 +69,12 @@ app.get('/logout',function(req,res){
     res.redirect('/');
 });
 
+console.log("Zum socket, Schweinhund");
+app.get('/BackEnd/socket.io', function(){
+
+    res.sendFile('/node_modules/socket.io/node_modules/socket.io-client/socket.io.js');
+});
+
 
 
 app.use(function(req,res,next){
@@ -113,3 +119,12 @@ app.get('/isLogged',function(req,res){
 });
 
 app.listen(3000);
+var io = require('socket.io')(http);
+
+io.on('connection',function(socket){
+    console.log("user connected");
+
+});
+
+
+

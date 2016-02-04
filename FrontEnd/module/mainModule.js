@@ -67,6 +67,14 @@ main_module.config(function($routeProvider){
         templateUrl:'partial_addView.html',
         controller:'addController',
         resolve:{loginRequired:loginRequired}
+    }).when('/location',{
+        
+        templateUrl:'location.html',
+        resolve:{loginRequired:loginRequired}
+    }).when('/chat',{
+        
+        templateUrl:'chat_view.html',
+        resolve:{loginRequired:loginRequired}
     });
     
     
